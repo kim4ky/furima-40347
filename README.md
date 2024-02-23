@@ -9,6 +9,7 @@
 | encrypted_password | string | null: false |
 | name               | string | null: false |
 | name_katakana      | string | null: false |
+| date_of_birth      | string | null: false |
 
 ### Association
 
@@ -17,14 +18,17 @@
 
 ## items テーブル
 
-| Column             | Type       | Options     |
-| ------------------ | ---------- | ----------- |
-| name               | string     | null: false |
-| description        | text       | null: false |
-| price              | integer    | null: false |
-| commission         | integer    | null: false |
-| profit             | integer    | null: false |
-| user               | references | null: false, foreign_key: true |
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| name                | string     | null: false |
+| description         | text       | null: false |
+| price               | integer    | null: false |
+| category            | string     | null: false |
+| condition           | string     | null: false |
+| shipping_fee_burden | string     | null: false |
+| origin_region       | string     | null: false |
+| shipping_days       | string     | null: false |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -46,12 +50,15 @@
 
 ## shippings テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| post_code    | string     | null: false                    |
-| address      | string     | null: false                    |
-| phone_number | string     | null: false                    |
-| buy          | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| post_code     | string     | null: false                    |
+| prefecture    | string     | null: false                    |
+| municipality  | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| buy           | references | null: false, foreign_key: true |
 
 ### Association
 
