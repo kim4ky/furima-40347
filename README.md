@@ -7,6 +7,8 @@
 | nickname           | string | null: false |
 | email              | string | null: false, unique: true |
 | encrypted_password | string | null: false |
+| name               | string | null: false |
+| name_katakana      | string | null: false |
 
 ### Association
 
@@ -20,6 +22,8 @@
 | name               | string     | null: false |
 | description        | text       | null: false |
 | price              | integer    | null: false |
+| commission         | integer    | null: false |
+| profit             | integer    | null: false |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
@@ -44,8 +48,9 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
+| post_code    | string     | null: false                    |
 | address      | string     | null: false                    |
-| phone_number | integer    | null: false                    |
+| phone_number | string     | null: false                    |
 | buy          | references | null: false, foreign_key: true |
 
 ### Association
