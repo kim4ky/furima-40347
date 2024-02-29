@@ -13,9 +13,9 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :price, presence: true
-  validates :category_id, numericality: { other_than: 1 }
-  validates :condition_id, numericality: { other_than: 1 }
-  validates :shipping_fee_burden_id, numericality: { other_than: 1 }
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :shipping_day_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :shipping_fee_burden_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
+  validates :shipping_day_id, numericality: { other_than: 1, message: "can't be blank" }
 end
