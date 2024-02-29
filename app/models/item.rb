@@ -6,5 +6,16 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :shipping_day
 
+  belongs_to :user
   has_one_attached :image
+
+  validates :image, presence: true
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
+  validates :category_id, numericality: { other_than: 1 }
+  validates :condition_id, numericality: { other_than: 1 }
+  validates :shipping_fee_burden_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :shipping_day_id, numericality: { other_than: 1 }
 end
