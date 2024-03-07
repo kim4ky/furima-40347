@@ -29,3 +29,4 @@ const pay = () => {
 };
 
 addEventListener("turbo:load", pay);
+window.addEventListener("turbo:render", pay);
