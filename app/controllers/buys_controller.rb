@@ -4,8 +4,15 @@ class BuysController < ApplicationController
   def index
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @item = Item.find(params[:item_id])
-    redirect_to root_path if current_user == @item.user
-    @buy_shipping = BuyShipping.new
+    if current_user != @item.user
+      if @item.buy.present?
+        redirect_to root_path
+      else
+        @buy_shipping = BuyShipping.new
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def create
