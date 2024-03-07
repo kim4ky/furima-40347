@@ -1,8 +1,9 @@
 class BuyShipping
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :buy_id
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :municipality, :address, :building_name, :phone_number, :buy_id, :token
 
   with_options presence: true do
+    validates :token
     validates :user_id
     validates :item_id
     validates :post_code, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)" }
