@@ -12,6 +12,11 @@ RSpec.describe BuyShipping, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@buy_shipping).to be_valid
       end
+
+      it 'building_nameが空でも保存できること' do
+        @buy_shipping.building_name = ''
+        expect(@buy_shipping).to be_valid
+      end
     end
     context '商品購入記録の保存ができない場合' do
       it 'userが紐付いていなければ保存できない' do
@@ -39,7 +44,7 @@ RSpec.describe BuyShipping, type: :model do
       end
 
       it 'prefecture_idが選択されていないと保存できない' do
-        @buy_shipping.prefecture_id = nil
+        @buy_shipping.prefecture_id = 1
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -66,6 +71,12 @@ RSpec.describe BuyShipping, type: :model do
         @buy_shipping.phone_number = '080123456'
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Phone number is too short")
+      end
+
+      it '電話番号が12桁以上だと購入できない' do
+        @buy_shipping.phone_number = '080-1234-5678'
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid. Input only number")
       end
 
       it '電話番号が半角数値でないと購入できないこと' do
