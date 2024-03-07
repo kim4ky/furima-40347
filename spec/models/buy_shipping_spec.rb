@@ -73,6 +73,12 @@ RSpec.describe BuyShipping, type: :model do
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Phone number is invalid. Input only number")
       end
+
+      it "tokenが空では登録できないこと" do
+        @buy_shipping.token = nil
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end
